@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
-
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-ext {
+apply plugin: 'com.novoda.bintray-release'
+/*apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'*/
+/*ext {
     bintrayRepo = 'maven'  // this is the same as whatever you called your repository in Bintray
     bintrayName = 'mathlib' // your bintray package name. I am calling it the same as my library name.
 
@@ -12,19 +12,19 @@ ext {
 
     libraryDescription = 'Simpel math library'
 
-    siteUrl = 'https://github.com/example/my-library'
-    gitUrl = 'https://github.com/example/my-library.git'
+    siteUrl = 'https://github.com/kundankale/mathlib.git'
+    gitUrl = 'https://github.com/kundankale/mathlib.git'
 
     libraryVersion = '1.0.0'
     userOrg = 'own660'
-    developerId = 'kundan0610' // Maven plugin uses this. I don't know if it needs to be anything special.
+    developerId = 'own660' // Maven plugin uses this. I don't know if it needs to be anything special.
     developerName = 'My Name'
     developerEmail = 'myemail@example.com'
 
     licenseName = 'The MIT License (MIT)'
     licenseUrl = 'https://opensource.org/licenses/MIT'
     allLicenses = ["MIT"]
-}
+}*/
 android {
     compileSdkVersion 27
 
@@ -34,7 +34,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -46,16 +46,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    /*publish {
+    publish {
         groupId = 'com.matlib'
-        artifactId = 'mathlib'
-        publishVersion = '0.1'
+        artifactId = 'privatemathlib'
+        publishVersion = '0.3'
         desc = 'Simple math library'
         licences = ['Apache-2.0']
-        uploadName='Math Lib'
-        website = 'https://github.com/stfalcon-studio/BottomTabLayout'
-    }*/
-
+        uploadName='privatemathlib'
+        userOrg = 'own660'
+        website = 'www.blancco.com'
+    }
+    lintOptions {
+        // set to true to turn off analysis progress reporting by lint
+        quiet true
+        // if true, stop the gradle build if errors are found
+        abortOnError false
+        // if true, only report errors
+        ignoreWarnings true
+    }
 }
 
 dependencies {
@@ -65,10 +73,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
+    implementation 'com.amazonaws:aws-android-sdk-core:2.2.13'
+    implementation 'com.amazonaws:aws-android-sdk-cognito:2.2.13'
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.2.13'
+    implementation 'com.amazonaws:aws-android-sdk-ddb:2.2.13'
 }
-group = publishedGroupId // Maven Group ID for the artifact
+//group = publishedGroupId // Maven Group ID for the artifact
 
+/*
 install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
@@ -171,4 +183,4 @@ bintray {
             }
         }
     }
-}
+}*/
